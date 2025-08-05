@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIGIstorya</title>
+  <link rel="icon" href="../../images/logo.png" />
+  <script src="https://kit.fontawesome.com/aed89df169.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f0e8e1] text-[#551a25]">
+<header class="bg-[#551a25] shadow-lg z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="../../images/logo.png" alt="DIGIstorya Logo" class="h-10 w-auto" />
+        <span class="text-[#f0e8e1] font-bold text-2xl tracking-wide hidden sm:inline">DIGIstorya</span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="home.php" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">HOME</a>
+        <a href="about.html" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">ABOUT</a>
+        <a href="more.html" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">MORE</a>
+         <a href="activities.php" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">ACTIVITIES</a>
+        <a href="exercise.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">EXERCISES</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="profile.php" class="text-[#f0e8e1] text-xl hover:text-[#d79e4b] transition">
+          <i class="fas fa-user-circle"></i>
+        </a>
+        <a href="logout.php" class="text-[#f0e8e1] text-xl hover:text-[#d79e4b] transition">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+        <button id="menu-toggle" class="md:hidden text-[#f0e8e1] focus:outline-none">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden px-6 pb-4 hidden transition-all duration-300">
+      <a href="home.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">HOME</a>
+      <a href="about.html" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">ABOUT</a>
+      <a href="more.html" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">MORE</a>
+      <a href="activities.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">ACTIVITES</a>
+      <a href="exercise.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">EXERCISES</a>
+    </div>
+  </header>
+
+
+
+  <main class="py-16">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 bg-[#f0e8e1] rounded-2xl p-8 mb-16 overflow-hidden">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-12">
+        <div class="w-full sm:w-1/3 p-4" data-aos="fade-right">
+          <img src="../../images/imissu.png" alt="Child Learning" class="rounded-xl transition-transform duration-500 hover:scale-105 hover:rotate-3" />
+        </div>
+
+        <div class="w-full sm:w-2/3 px-4" data-aos="fade-left">
+          <h2 class="text-[#551a25] text-4xl font-bold mb-6">Trivia</h2>
+          <div class="space-y-4 text-[#551a25] text-lg leading-relaxed text-justify">
+            <p data-aos="fade-up">Ang <strong>Lakbay Aral</strong> ay isang makabagong aklat sa kasaysayan na ginamitan ng teknolohiya sa anyo ng “Digistorya” upang umangkop sa iba’t ibang learning styles ng mga mag-aaral!</p>
+            <p data-aos="fade-up" data-aos-delay="100">Sa pamamagitan ng digital tools, interactive activities, at self-assessment questions, tinutulungan nito ang mga estudyante na magkaroon ng mas malalim, makabuluhan, at personal na pag-unawa sa mga aralin—lalo na sa mga paksa tungkol sa Kolonyalismo at Imperyalismo sa Timog-Silangang Asya.</p>
+            <p data-aos="fade-up" data-aos-delay="200">Sa Lakbay Aral at Digistorya, ang kasaysayan ay hindi na lamang binabasa—ito’y isinasabuhay sa makabagong paraan. Magsimula ng isang kwento ng pagkatuto at tuklasin ang kasaysayan sa pamamagitan ng mga interactive na gawain!</p>
+          </div>
+          <div class="text-center mt-8" data-aos="zoom-in" data-aos-delay="300">
+            <button type="submit"
+              class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-[#f0e8e1] text-[#551a25] backdrop-blur-md lg:font-semibold isolation-auto border-[#551a25] before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#d79e4b] hover:text-white before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+              <a href="exercise.php">Learn more</a>
+              <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-white text-white ease-linear duration-300 rounded-full border border-[#551a25] group-hover:border-none p-2 rotate-45" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" class="fill-[#551a25] group-hover:fill-[#551a25]"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+     
+<section class="max-w-5xl mx-auto px-6 py-10 my-12  rounded-3xl ">
+  <h2 class="text-4xl font-extrabold text-center text-[#551a25] mb-16 ">
+    Yugto ng Imperyalismo at Kolonyalismo
+  </h2>
+
+  <div class="relative before:absolute before:top-0 before:bottom-0 before:left-1/2 before:w-1 before:bg-[#d79e4b]">
+    <!-- Timeline Item -->
+    <article class="mb-16 w-full md:w-1/2 md:pr-10 text-center md:text-right relative md:left-0">
+      <h3 class="text-2xl font-bold text-[#551a25] mb-3 underline decoration-[#d79e4b] underline-offset-4">
+        Unang Yugto ng Imperyalismo (1500s–1700s)
+      </h3>
+      <p class="italic text-[#a85a3e] font-medium text-sm mb-4">
+        Nag-ugat sa “pampalasa”!
+      </p>
+      <ul class="list-disc list-inside text-[#551a25] text-sm leading-relaxed space-y-2 text-justify">
+        <li>Paghahanap ng spices tulad ng clove, nutmeg, at cinnamon mula sa Moluccas.</li>
+        <li>Ang Pilipinas ay bahagi ng unang yugtong ito.</li>
+        <li>Dumating ang mga Espanyol noong 1521; tuluyang nasakop noong 1565.</li>
+      </ul>
+    </article>
+
+    <!-- Timeline Item -->
+    <article class="mb-16 w-full md:w-1/2 md:pl-10 text-center md:text-left relative md:left-auto ml-auto">
+      <h3 class="text-2xl font-bold text-[#551a25] mb-3 underline decoration-[#d79e4b] underline-offset-4">
+        Ikalawang Yugto ng Imperyalismo (1800s–1900s)
+      </h3>
+      <p class="italic text-[#a85a3e] font-medium text-sm mb-4">
+        Industrial Revolution = Expansion!
+      </p>
+      <ul class="list-disc list-inside text-[#551a25] text-sm leading-relaxed space-y-2 text-justify">
+        <li>Mabilis na industriyalisasyon sa Europa → raw materials + bagong pamilihan.</li>
+        <li>Hindi laging madugo sa simula—kalakalan muna bago pananakop.</li>
+        <li>Ginamit ang diplomasiya, panunuhol, o dahas para mangibabaw.</li>
+      </ul>
+    </article>
+
+    <!-- Timeline Item -->
+    <article class="mb-16 w-full md:w-1/2 md:pr-10 text-center md:text-right relative md:left-0">
+      <h3 class="text-2xl font-bold text-[#551a25] mb-3 underline decoration-[#d79e4b] underline-offset-4">
+        Kanluraning Kolonyalismo sa Pangkontinenteng Timog-Silangang Asya
+      </h3>
+      <p class="text-sm text-[#551a25] mb-4 text-justify leading-relaxed">
+        Tatlong bansa lang ang nagsakop sa mainland Southeast Asia:
+      </p>
+      <ul class="list-disc list-inside text-[#551a25] text-sm leading-relaxed space-y-2 text-justify mb-4">
+        <li>Britain – Myanmar (Burma)</li>
+        <li>France – Vietnam, Laos, Cambodia (French Indochina)</li>
+        <li>Siam (Thailand) – Hindi nasakop! (Kahanga-hanga!)</li>
+      </ul>
+      <p class="italic text-[#a85a3e] font-medium text-sm text-justify">
+        Thailand ang tanging bansa sa Southeast Asia na hindi nakolonisa.
+      </p>
+      <p class="italic text-[#a85a3e] font-medium text-sm text-justify">
+        Dahil sa matatalinong negosasyon at pagiging neutral sa pagitan ng France at Britain.
+      </p>
+    </article>
+
+    <!-- Timeline Item -->
+    <article class="w-full md:w-1/2 md:pl-10 text-center md:text-left relative md:left-auto ml-auto">
+      <h3 class="text-2xl font-bold text-[#551a25] mb-3 underline decoration-[#d79e4b] underline-offset-4">
+        Imperyalismong Hapon sa ika-20 Siglo
+      </h3>
+      <p class="italic text-[#a85a3e] font-medium text-sm mb-4">
+        “Asia for Asians”… pero may twist!
+      </p>
+      <ul class="list-disc list-inside text-[#551a25] text-sm leading-relaxed space-y-2 text-justify">
+        <li>Ginamit ng Hapon ang slogan na “Asia for Asians.”</li>
+        <li>Ngunit ito’y panakip-mata sa kanilang layuning pananakop.</li>
+        <li>Sinakop nila ang Korea, Taiwan, at bahagi ng China bago ang WWII.</li>
+        <li>Nang sakupin ang Pilipinas noong 1942, naging brutal ang pamumuno.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+ <div class="mt-20">
+        <h3 class="text-[#551a25] text-3xl font-bold mb-10 text-center" data-aos="fade-down">Fun Facts</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-xl transition-transform duration-300 hover:scale-105" data-aos="zoom-in">
+            <h4 class="text-[#551a25] text-xl font-semibold mb-3">Alam mo ba?</h4>
+            <p class="text-[#551a25] text-lg leading-relaxed">Ang unang laban sa Kolonyalismo ay hindi lamang nangyari sa Pilipinas kundi sa iba't ibang bahagi ng Asya tulad ng Vietnam at Indonesia.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl transition-transform duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
+            <h4 class="text-[#551a25] text-xl font-semibold mb-3">Alam mo ba?</h4>
+            <p class="text-[#551a25] text-lg leading-relaxed">Sa pamamagitan ng iba't ibang digital tools, ang kasaysayan ay mas nagiging masaya at mas madali nang maunawaan ng mga bata at mag-aaral.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl transition-transform duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="400">
+            <h4 class="text-[#551a25] text-xl font-semibold mb-3">Alam mo ba?</h4>
+            <p class="text-[#551a25] text-lg leading-relaxed">Ang “Digistorya” ay isang interactive learning platform na gumagamit ng mga animated na karakter upang magbigay ng masayang karanasan sa pagkatuto.</p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+
+  </main>
+
+  <footer class="bg-[#551a25] text-white pt-12 pb-6 border-t-2 border-[#d79e4b]">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+      <div>
+        <div class="flex justify-center md:justify-start items-center gap-3 mb-6">
+          <img src="../../images/logo.png" alt="DIGIstorya Logo" class="h-12 " />
+          <span class="text-secondary text-3xl font-extrabold tracking-wide">DIGIstorya</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-secondary font-semibold text-lg mb-6 tracking-wide">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="home.php" class="hover:underline hover:text-secondary transition duration-300">Home</a></li>
+          <li><a href="about.html" class="hover:underline hover:text-secondary transition duration-300">About</a></li>
+          <li><a href="more.html" class="hover:underline hover:text-secondary transition duration-300">More</a></li>
+          <li><a href="activities.php" class="hover:underline hover:text-secondary transition duration-300">Activites</a></li>
+          <li><a href="exercise.php" class="hover:underline hover:text-secondary transition duration-300">Exercises</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-secondary font-semibold text-lg mb-6 tracking-wide">Contact Us</h3>
+        <p class="text-sm text-gray-200 opacity-80 mb-3 flex items-center gap-2">
+          <i class="fas fa-envelope text-secondary"></i>
+          Email: <a href="mailto:digistorya@gmail.com" class=" hover:text-secondary transition duration-300">digistorya@gmail.com</a>
+        </p>
+        <p class="text-sm text-gray-200 opacity-80 flex items-center gap-2">
+          <i class="fab fa-facebook text-secondary"></i>
+          Facebook: <a href="#" class=" hover:text-secondary transition duration-300">facebook.com/digistorya</a>
+        </p>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-white/20 pt-4 text-sm text-center text-gray-300">
+      &copy; 2025 <span class="font-semibold">DIGIstorya</span>. All rights reserved.
+    </div>
+</footer>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    });
+  </script>
+</body>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="mHgpNSB7Zpe_aU0HLJ3i9";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</html>

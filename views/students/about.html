@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIGIstorya</title>
+  <link rel="icon" href="../../images/logo.png" />
+  <script src="https://kit.fontawesome.com/aed89df169.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #fffaf6, #f0e8e1);
+      overflow-x: hidden;
+    }
+
+    .bg-primary {
+      background-color: #551a25;
+    }
+
+    .text-primary {
+      color: #551a25;
+    }
+
+    .text-secondary {
+      color: #d79e4b;
+    }
+
+    .bg-secondary {
+      background-color: #d79e4b;
+    }
+
+    .hover-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .search-btn {
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background-color: #d79e4b;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+ <header class="bg-[#551a25] shadow-lg z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="../../images/logo.png" alt="DIGIstorya Logo" class="h-10 w-auto" />
+        <span class="text-[#f0e8e1] font-bold text-2xl tracking-wide hidden sm:inline">DIGIstorya</span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="home.php" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">HOME</a>
+        <a href="about.html" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">ABOUT</a>
+        <a href="more.html" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">MORE</a>
+         <a href="activities.php" class="text-[#f0e8e1] font-semibold tracking-wide hover:text-[#d79e4b] hover:scale-105 transition-all duration-200">ACTIVITIES</a>
+        <a href="exercise.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">EXERCISES</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="profile.php" class="text-[#f0e8e1] text-xl hover:text-[#d79e4b] transition">
+          <i class="fas fa-user-circle"></i>
+        </a>
+        <a href="logout.php" class="text-[#f0e8e1] text-xl hover:text-[#d79e4b] transition">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+        <button id="menu-toggle" class="md:hidden text-[#f0e8e1] focus:outline-none">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden px-6 pb-4 hidden transition-all duration-300">
+      <a href="home.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">HOME</a>
+      <a href="about.html" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">ABOUT</a>
+      <a href="more.html" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">MORE</a>
+      <a href="activities.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">ACTIVITES</a>
+      <a href="exercise.php" class="block py-2 text-[#f0e8e1] font-semibold hover:text-[#d79e4b]">EXERCISES</a>
+    </div>
+  </header>
+
+
+
+      
+    <section class="py-24 px-6 lg:px-32">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-4" data-aos="fade-down">
+            About Us
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-down" data-aos-delay="100">
+            Meet the people behind  <span class="text-secondary font-semibold">DIGIstorya</span> — driven by a passion for education.
+          </p>
+        </div>
+      
+        <div class="flex justify-center" data-aos="zoom-in" data-aos-delay="200">
+          <div class="relative group">
+            <img
+              src="../../images/group.jpg"
+              alt="Team Photo"
+              class="rounded-3xl shadow-2xl border-4 border-secondary w-[90vw] max-w-2xl transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        </div>
+      </section>
+
+    <section class="">
+      <h1 class="text-5xl font-bold text-center text-primary mb-4" data-aos="fade-down">Get to Know the Creators</h1>
+      
+        <section class=" mt-20">
+            <div class="w-full bg-primary py-12">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 px-6" data-aos="fade-up">
+                <img src="../../images/desiree.jpg" alt="Desiree"
+                    class="w-36 h-36 object-cover rounded-full border-4 border-white shadow-2xl hover:scale-105 transition-transform duration-300" />
+                <div class="text-white">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Desiree Joy T. Gutierrez</h2>
+                    <p class="text-base leading-relaxed opacity-90">
+                        Kasalukuyang kumukuha ng kursong Bachelor of Secondary Education, na may espesyalisasyon sa Social Studies, sa General de Jesus College para sa taong panuruan 2024–2025.
+                        Noong 2022, nagtapos siya sa Senior High School sa strand na Humanities and Social Sciences at ginawaran ng may mataas na parangal. Mula noon ay nanatili siyang consistent honor student at naging aktibong miyembro ng College Student Council mula 2022 hanggang 2024.
+                    </p>
+                </div>
+                </div>
+            </div>
+            
+            <div class="w-full bg-[#f0e8e1] py-12">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 px-6" data-aos="fade-up" data-aos-delay="100">
+                <img src="../../images/angelo.jpg" alt="Angelo"
+                    class="w-36 h-36 object-cover rounded-full border-4 border-primary shadow-2xl hover:scale-105 transition-transform duration-300" />
+                <div class="text-primary">
+                    <h2 class="text-3xl font-bold mb-2">Angelo Mico D. Puzon</h2>
+                    <p class="text-base leading-relaxed opacity-90">
+                      Kasalukuyang kumukuha ng kursong Bachelor of Secondary Education, na may espesyalisasyon sa Social Studies, sa General de Jesus College para sa taong panuruan 2024–2025. Noong 2013, nagtapos siya ng High School sa Holy Rosary Colleges Foundation. Siya ay naging miyembro ng Psychology Society at naging aktibo sa pagbigay ng suporta at serbisyo sa mga taong may mga disabilidad.
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="w-full bg-primary py-12">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 px-6" data-aos="fade-up" data-aos-delay="200">
+                <img src="../../images/kaira.jpg" alt="Kaira"
+                    class="w-36 h-36 object-cover rounded-full border-4 border-white shadow-2xl hover:scale-105 transition-transform duration-300" />
+                <div class="text-white">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Kaira C. Valiente</h2>
+                    <p class="text-base leading-relaxed opacity-90">
+                      Kasalukuyang kumukuha ng kursong Bachelor of Secondary Education, na may espesyalisasyon sa Social Studies, sa General de Jesus College para sa taong panuruan 2024–2025. Noong 2013, nagtapos siya ng High School sa Holy Rosary Colleges Foundation. Siya ay naging miyembro ng Psychology Society at naging aktibo sa pagbigay ng suporta at serbisyo sa mga taong may mga disabilidad.
+                    </p>
+                </div>
+                </div>
+            </div>
+        </section>
+      
+      
+        <section class="py-20 px-6 lg:px-32 bg-[#f0e8e1]">
+            <div class="max-w-4xl mx-auto text-center">
+
+
+                <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-6" data-aos="fade-up" data-aos-delay="200">
+                    Our Mission
+                </h2>
+
+                <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+DIGIstorya aims to deliver meaningful knowledge in history through a digital approach—making it easier, more engaging, and more exciting for the new generation of learners.
+
+
+                </p>
+ 
+            </div>
+        </section>
+        
+<footer class="bg-[#551a25] text-white pt-12 pb-6 border-t-2 border-[#d79e4b]">
+          <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+            <div>
+              <div class="flex justify-center md:justify-start items-center gap-3 mb-6">
+                <img src="../../images/logo.png" alt="DIGIstorya Logo" class="h-12 " />
+                <span class="text-secondary text-3xl font-extrabold tracking-wide">DIGIstorya</span>
+              </div>
+          
+            </div>
+            <div>
+              <h3 class="text-secondary font-semibold text-lg mb-6 tracking-wide">Quick Links</h3>
+              <ul class="space-y-2 text-sm">
+                <li><a href="home.php" class="hover:underline hover:text-secondary transition duration-300">Home</a></li>
+                <li><a href="about.html" class="hover:underline hover:text-secondary transition duration-300">About</a></li>
+                <li><a href="more.html" class="hover:underline hover:text-secondary transition duration-300">More</a></li>
+                <li><a href="activities.php" class="hover:underline hover:text-secondary transition duration-300">Activites</a></li>
+                <li><a href="exercise.php" class="hover:underline hover:text-secondary transition duration-300">Exercises</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-secondary font-semibold text-lg mb-6 tracking-wide">Contact Us</h3>
+              <p class="text-sm text-gray-200 opacity-80 mb-3 flex items-center gap-2">
+                <i class="fas fa-envelope text-secondary"></i>
+                Email: <a href="mailto:digistorya@gmail.com" class=" hover:text-secondary transition duration-300">digistorya@gmail.com</a>
+              </p>
+              <p class="text-sm text-gray-200 opacity-80 flex items-center gap-2">
+                <i class="fab fa-facebook text-secondary"></i>
+                Facebook: <a href="#" class=" hover:text-secondary transition duration-300">facebook.com/digistorya</a>
+              </p>
+            </div>
+          </div>
+          <div class="mt-12 border-t border-white/20 pt-4 text-sm text-center text-gray-300">
+            &copy; 2025 <span class="font-semibold">DIGIstorya</span>. All rights reserved.
+          </div>
+</footer>
+
+<script>
+
+AOS.init();
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('keydown', function (event) {
+  if (
+    event.key === 'F12' ||
+    (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'C' || event.key === 'J')) ||
+    (event.ctrlKey && event.key === 'U')
+  ) {
+    event.preventDefault();
+  }
+});
+
+document.getElementById("menu-toggle").addEventListener("click", function () {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    });
+</script>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="mHgpNSB7Zpe_aU0HLJ3i9";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>

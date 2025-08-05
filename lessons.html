@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lessons Viewer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Select Grade and Lessons</h1>
+
+    <!-- Grade Selection -->
+    <label for="grade" class="block mb-2 font-semibold">Select Grade:</label>
+    <select id="grade" class="w-full p-2 border rounded mb-4">
+      <option value="" disabled selected>Choose Grade</option>
+      <option value="7">Grade 7</option>
+      <option value="8">Grade 8</option>
+      <option value="9">Grade 9</option>
+      <option value="10">Grade 10</option>
+      <option value="11">Grade 11</option>
+      <option value="12">Grade 12</option>
+    </select>
+
+    <!-- Strand selection for Grade 11 & 12 -->
+    <div id="strand-container" class="mb-4 hidden">
+      <label for="strand" class="block mb-2 font-semibold">Select Strand:</label>
+      <select id="strand" class="w-full p-2 border rounded">
+        <option value="" disabled selected>Choose Strand</option>
+        <option value="ABM">ABM</option>
+        <option value="STEM">STEM</option>
+        <option value="HUMSS">HUMSS</option>
+        <option value="TVL">TVL</option>
+        <option value="ICT">ICT</option>
+      </select>
+    </div>
+
+    <!-- Subject selection -->
+    <div id="subject-container" class="mb-6 hidden">
+      <label for="subject" class="block mb-2 font-semibold">Select Subject:</label>
+      <select id="subject" class="w-full p-2 border rounded">
+        <option value="" disabled selected>Choose Subject</option>
+      </select>
+    </div>
+
+    <!-- Lessons display -->
+    <div id="lessons-container" class="hidden bg-gray-50 p-4 rounded border">
+      <h2 class="text-xl font-bold mb-3" id="lessons-title">Lessons</h2>
+
+      <div id="lesson-content" class="space-y-4">
+        <!-- Lesson content will appear here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample data for subjects and lessons
+    const subjectsData = {
+      // Junior high subjects by grade
+      // Junior high subjects by grade
+    "7": ["Mathematics", "English", "Filipino", "Science", "MAPEH", "Araling Panlipunan"],
+    "8": ["Mathematics", "English", "Filipino", "Science", "MAPEH", "Araling Panlipunan"],
+    "9": ["Mathematics", "English", "Filipino", "Science", "MAPEH", "Araling Panlipunan"],
+    "10": ["Mathematics", "English", "Filipino", "Science", "MAPEH", "Araling Panlipunan"],
+
+
+      // Senior high subjects by strand
+      "11_ABM": ["Accounting", "Business Math"],
+      "11_STEM": ["Calculus", "Physics"],
+      "11_HUMSS": ["Sociology", "Philosophy"],
+      "11_TVL": ["Technical Drawing", "Home Economics"],
+      "11_ICT": ["Computer Programming", "Networking"],
+
+      "12_ABM": ["Accounting 2", "Business Management"],
+      "12_STEM": ["Advanced Calculus", "Advanced Physics"],
+      "12_HUMSS": ["Political Science", "Psychology"],
+      "12_TVL": ["Electrical Installation", "Cookery"],
+      "12_ICT": ["Web Development", "Database Systems"],
+    };
+
+   const lessonsData = {
+  "Mathematics": {
+    paragraphs: `Mathematics is the study of numbers, quantities, shapes, and patterns. It is a fundamental subject that helps us understand the world through logical reasoning and problem-solving. Math skills are applied in everyday activities like budgeting, cooking, and even in technology and engineering.`,
+    essay: `Mathematics plays a vital role in our daily lives and in various fields such as science, engineering, economics, and medicine. By studying math, students develop critical thinking and analytical skills that help them solve complex problems. The discipline also promotes logical thinking and precision, which are essential for success in many careers.`,
+    explanation: `Mathematics consists of several branches such as arithmetic (basic operations), algebra (working with variables), geometry (study of shapes and spaces), and statistics (data analysis). Learning math helps improve logical reasoning and the ability to think abstractly.`,
+    funFacts: `Did you know that the concept of zero was first used in India? Zero is essential in the number system and makes complex calculations possible. Another fun fact is that the Fibonacci sequence appears in nature, like the arrangement of leaves or the pattern of a pinecone.`,
+    infographic: "Infographic: The Four Basic Operations and Their Properties",
+    video: "https://www.youtube.com/watch?v=NybHckSEQBI&t=5s" 
+  },
+  "English": {
+    paragraphs: `English is the language of communication in many parts of the world. It helps students express their thoughts clearly and understand literature, which enriches their knowledge of different cultures and ideas.`,
+    essay: `Learning English is crucial in today’s globalized world. It opens doors to education, technology, and international business. Students improve their reading, writing, speaking, and listening skills, which are essential for effective communication.`,
+    explanation: `English lessons often focus on grammar, vocabulary, reading comprehension, and writing skills. These components help students understand the structure of the language and how to use it effectively.`,
+    funFacts: `English is one of the most widely spoken languages in the world. It borrows words from many languages like Latin, French, and German. For example, “kindergarten” comes from German meaning “children’s garden.”`,
+    infographic: "Infographic: Parts of Speech in English",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Filipino": {
+    paragraphs: `Filipino is the national language of the Philippines and is important for expressing culture, traditions, and national identity. It allows students to communicate effectively with their fellow Filipinos.`,
+    essay: `Studying Filipino connects students to their heritage and promotes appreciation for Philippine literature and history. It also helps in understanding regional dialects and fostering unity among Filipinos.`,
+    explanation: `Filipino lessons focus on grammar, vocabulary, reading, writing, and oral communication. The subject also introduces famous Filipino authors and literary works.`,
+    funFacts: `Filipino is based mainly on Tagalog but includes words from Spanish, English, and other Philippine languages. It is constantly evolving as new words are added from different influences.`,
+    infographic: "Infographic: Common Filipino Sentence Structures",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Science": {
+    paragraphs: `Science is the study of the natural world through observation and experimentation. It helps students understand how things work, from the tiniest cells to the vast universe.`,
+    essay: `The scientific method teaches students to ask questions, form hypotheses, conduct experiments, and draw conclusions. This approach develops critical thinking and problem-solving skills that are valuable in all areas of life.`,
+    explanation: `Science is divided into branches such as biology (study of living things), chemistry (study of matter and reactions), and physics (study of energy and forces). Each branch helps us understand different aspects of the world.`,
+    funFacts: `Bananas are slightly radioactive due to their potassium content, but they are safe to eat. Another interesting fact is that water expands when it freezes, which is why ice floats.`,
+    infographic: "Infographic: The Scientific Method Steps",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "MAPEH": {
+    paragraphs: `MAPEH stands for Music, Arts, Physical Education, and Health. This subject promotes creativity, physical fitness, and overall well-being.`,
+    essay: `MAPEH helps students develop artistic skills, appreciate different art forms, and understand the importance of physical health. Regular physical activity improves concentration and mental health.`,
+    explanation: `The subject includes lessons on musical instruments, art techniques, physical exercises, and health topics like nutrition and hygiene.`,
+    funFacts: `The human body has over 600 muscles that help us move. Music therapy is used to help patients recover from illnesses.`,
+    infographic: "Infographic: Benefits of Physical Exercise",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Araling Panlipunan": {
+    paragraphs: `Araling Panlipunan is the study of history, geography, culture, and government. It helps students understand their role as citizens and appreciate the country’s heritage.`,
+    essay: `By learning about the past and present, students develop a sense of identity and responsibility. The subject covers important events, influential leaders, and cultural traditions.`,
+    explanation: `Topics include Philippine history, world civilizations, government systems, and current events. Understanding these helps students make informed decisions as future voters and leaders.`,
+    funFacts: `The Philippines was named after King Philip II of Spain. The country is made up of over 7,000 islands, each with its own unique culture.`,
+    infographic: "Infographic: Timeline of Philippine History",
+    video: "VIDEO_PLACEHOLDER"
+
+ },
+  "Accounting": {
+    paragraphs: `Accounting involves recording, classifying, and summarizing financial transactions. It provides information that is essential for decision-making in business.`,
+    essay: `Accounting is often called the "language of business" because it communicates financial information to stakeholders. It helps companies track their income and expenses, ensuring transparency and accountability.`,
+    explanation: `This subject covers the basics of bookkeeping, financial statements, and the accounting cycle. Understanding these concepts is crucial for managing a business effectively.`,
+    funFacts: `The first known accounting records date back over 7,000 years to ancient Mesopotamia.`,
+    infographic: "Infographic: The Accounting Cycle Steps",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Business Math": {
+    paragraphs: `Business Math applies mathematical concepts to solve business-related problems such as interest calculations, profit analysis, and budgeting.`,
+    essay: `Mastering business math helps students understand financial decisions, from calculating loan payments to analyzing investment opportunities. It bridges math skills with real-world business scenarios.`,
+    explanation: `Topics include percentages, interest rates, annuities, and financial ratios. These tools aid in effective business planning and management.`,
+    funFacts: `The concept of compound interest is known as the "eighth wonder of the world" because of its powerful effect on investments.`,
+    infographic: "Infographic: Simple vs Compound Interest",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // STEM - Grade 11
+  "Calculus": {
+    paragraphs: `Calculus is the branch of mathematics that studies rates of change and accumulation. It is foundational for science and engineering fields.`,
+    essay: `Learning calculus allows students to understand motion, growth, and change in natural phenomena. It equips them with tools for solving complex problems in physics and technology.`,
+    explanation: `The subject covers limits, derivatives, integrals, and their applications. These concepts are used to model real-world situations such as velocity and area under curves.`,
+    funFacts: `Calculus was developed independently by Isaac Newton and Gottfried Wilhelm Leibniz in the 17th century.`,
+    infographic: "Infographic: Basics of Derivatives and Integrals",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Physics": {
+    paragraphs: `Physics studies the properties of matter, energy, and the interactions between them. It explains how the universe behaves from tiny particles to massive galaxies.`,
+    essay: `Through physics, students learn about forces, motion, electricity, and magnetism. This knowledge forms the basis for innovations in technology and engineering.`,
+    explanation: `Topics include Newton’s laws, energy conservation, waves, and electromagnetism. Experiments help students grasp these fundamental principles.`,
+    funFacts: `Light behaves both as a wave and a particle, a concept known as wave-particle duality.`,
+    infographic: "Infographic: Newton’s Laws of Motion",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // HUMSS - Grade 11
+  "Sociology": {
+    paragraphs: `Sociology is the study of society, social relationships, and institutions. It helps us understand how human behavior is shaped by social structures.`,
+    essay: `By studying sociology, students explore topics like culture, socialization, and inequality. This understanding promotes empathy and informed citizenship.`,
+    explanation: `The subject covers theories of society, social groups, roles, and social change. It provides tools to analyze social issues critically.`,
+    funFacts: `The word “sociology” was coined by Auguste Comte, the father of sociology, in the 19th century.`,
+    infographic: "Infographic: Major Sociological Theories",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Philosophy": {
+    paragraphs: `Philosophy examines fundamental questions about existence, knowledge, values, and reason. It encourages critical thinking and reflection.`,
+    essay: `Studying philosophy helps students develop the ability to analyze arguments, think logically, and explore ethical dilemmas.`,
+    explanation: `Topics include logic, ethics, metaphysics, and epistemology. Philosophy lays the groundwork for understanding human thought and culture.`,
+    funFacts: `The word “philosophy” comes from Greek, meaning “love of wisdom.”`,
+    infographic: "Infographic: Branches of Philosophy",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // TVL - Grade 11
+  "Technical Drawing": {
+    paragraphs: `Technical Drawing teaches the creation of precise plans and diagrams used in construction and manufacturing.`,
+    essay: `This subject develops spatial awareness and attention to detail. It is essential for careers in engineering, architecture, and design.`,
+    explanation: `Students learn about drawing tools, perspectives, dimensioning, and symbols used in technical drawings.`,
+    funFacts: `The earliest technical drawings date back to ancient Egypt and Greece.`,
+    infographic: "Infographic: Basic Technical Drawing Symbols",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Home Economics": {
+    paragraphs: `Home Economics covers skills for managing a household, including cooking, budgeting, and nutrition.`,
+    essay: `This subject promotes practical knowledge that improves quality of life and self-sufficiency.`,
+    explanation: `Topics include meal planning, sewing, childcare, and financial management.`,
+    funFacts: `The first home economics classes were introduced in the early 20th century to improve family living standards.`,
+    infographic: "Infographic: Basic Nutrition Guide",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // ICT - Grade 11
+  "Computer Programming": {
+    paragraphs: `Computer Programming teaches students how to write instructions that computers can execute to perform tasks.`,
+    essay: `Learning programming develops logical thinking and problem-solving skills. It opens doors to careers in software development and technology innovation.`,
+    explanation: `Students learn programming languages, algorithms, and debugging techniques.`,
+    funFacts: `The first computer programmer was Ada Lovelace in the 19th century.`,
+    infographic: "Infographic: Programming Basics",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Networking": {
+    paragraphs: `Networking involves connecting computers to share resources and information.`,
+    essay: `Understanding networking is essential in the digital age for managing communication systems and internet services.`,
+    explanation: `Topics include network types, protocols, and security.`,
+    funFacts: `The first message sent over the ARPANET, the precursor to the internet, was “LO” (intended to be “LOGIN”).`,
+    infographic: "Infographic: Types of Computer Networks",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // Grade 12 ABM
+  "Accounting 2": {
+    paragraphs: `Advanced accounting builds on basic principles to cover more complex financial transactions and analysis.`,
+    essay: `This subject prepares students for careers in finance and accounting by teaching concepts like payroll, taxes, and auditing.`,
+    explanation: `Topics include adjusting entries, financial statement analysis, and internal controls.`,
+    funFacts: `The Sarbanes-Oxley Act was passed to improve corporate accounting transparency.`,
+    infographic: "Infographic: Financial Statement Components",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Business Management": {
+    paragraphs: `Business Management teaches the principles of planning, organizing, leading, and controlling business operations.`,
+    essay: `Understanding management concepts is key to running successful organizations and motivating teams.`,
+    explanation: `Students learn about organizational structures, leadership styles, and decision-making processes.`,
+    funFacts: `The term “management” comes from the Italian “maneggiare,” meaning to handle or control.`,
+    infographic: "Infographic: Functions of Management",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // Grade 12 STEM
+  "Advanced Calculus": {
+    paragraphs: `Advanced Calculus explores multivariable functions, differential equations, and their applications.`,
+    essay: `Students apply advanced mathematical tools to solve complex problems in physics, engineering, and economics.`,
+    explanation: `Topics include partial derivatives, multiple integrals, and vector calculus.`,
+    funFacts: `Vector calculus is used extensively in physics to describe fields like electromagnetism.`,
+    infographic: "Infographic: Multivariable Calculus Concepts",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Advanced Physics": {
+    paragraphs: `Advanced Physics covers topics like quantum mechanics, relativity, and thermodynamics.`,
+    essay: `This subject deepens understanding of the fundamental laws governing the universe.`,
+    explanation: `Students study particles, waves, energy conservation, and modern physics theories.`,
+    funFacts: `Einstein’s theory of relativity revolutionized physics in the 20th century.`,
+    infographic: "Infographic: Basics of Quantum Mechanics",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // Grade 12 HUMSS
+  "Political Science": {
+    paragraphs: `Political Science studies governments, political processes, and public policies.`,
+    essay: `Students learn about democracy, power dynamics, and citizen participation.`,
+    explanation: `Topics include political theories, electoral systems, and international relations.`,
+    funFacts: `The word “politics” comes from the Greek “polis,” meaning city-state.`,
+    infographic: "Infographic: Forms of Government",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Psychology": {
+    paragraphs: `Psychology explores human behavior and mental processes.`,
+    essay: `Understanding psychology helps in areas like mental health, education, and human resources.`,
+    explanation: `Subjects include cognitive, developmental, and social psychology.`,
+    funFacts: `Sigmund Freud is known as the father of psychoanalysis.`,
+    infographic: "Infographic: Major Psychological Theories",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // Grade 12 TVL
+  "Electrical Installation": {
+    paragraphs: `Electrical Installation covers the design and setup of electrical systems in buildings.`,
+    essay: `Students learn safety procedures and wiring techniques necessary for electricians.`,
+    explanation: `Topics include circuit diagrams, wiring, and troubleshooting.`,
+    funFacts: `Thomas Edison developed the first practical electric light bulb.`,
+    infographic: "Infographic: Basic Electrical Circuits",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Cookery": {
+    paragraphs: `Cookery teaches culinary skills including food preparation, cooking methods, and kitchen safety.`,
+    essay: `This subject prepares students for careers in the food service industry.`,
+    explanation: `Students practice recipes, nutrition, and food hygiene.`,
+    funFacts: `The Michelin Guide awards stars to outstanding restaurants worldwide.`,
+    infographic: "Infographic: Basic Cooking Techniques",
+    video: "VIDEO_PLACEHOLDER"
+  },
+
+  // Grade 12 ICT
+  "Web Development": {
+    paragraphs: `Web Development focuses on creating websites using HTML, CSS, JavaScript, and backend technologies.`,
+    essay: `Students learn to build interactive and responsive web pages.`,
+    explanation: `Topics include web design principles, coding, and deployment.`,
+    funFacts: `The first website went live in 1991 and was created by Tim Berners-Lee.`,
+    infographic: "Infographic: Web Development Basics",
+    video: "VIDEO_PLACEHOLDER"
+  },
+  "Database Systems": {
+    paragraphs: `Database Systems teach how to organize, store, and retrieve data efficiently.`,
+    essay: `Understanding databases is crucial for managing large amounts of information in businesses.`,
+    explanation: `Students learn SQL, database design, and normalization.`,
+    funFacts: `The first database management system was developed in the 1960s.`,
+    infographic: "Infographic: Database Components",
+    video: "VIDEO_PLACEHOLDER"
+  }
+};
+
+
+    const gradeSelect = document.getElementById("grade");
+    const strandContainer = document.getElementById("strand-container");
+    const strandSelect = document.getElementById("strand");
+    const subjectContainer = document.getElementById("subject-container");
+    const subjectSelect = document.getElementById("subject");
+    const lessonsContainer = document.getElementById("lessons-container");
+    const lessonContent = document.getElementById("lesson-content");
+    const lessonsTitle = document.getElementById("lessons-title");
+
+    gradeSelect.addEventListener("change", () => {
+      lessonsContainer.classList.add("hidden");
+      lessonContent.innerHTML = "";
+      subjectSelect.innerHTML = '<option value="" disabled selected>Choose Subject</option>';
+      subjectContainer.classList.add("hidden");
+      strandSelect.value = "";
+      strandContainer.classList.add("hidden");
+
+      const grade = gradeSelect.value;
+
+      if (["11", "12"].includes(grade)) {
+        strandContainer.classList.remove("hidden");
+      } else if (["7", "8", "9", "10"].includes(grade)) {
+        showSubjects(grade);
+      }
+    });
+
+    strandSelect.addEventListener("change", () => {
+      lessonsContainer.classList.add("hidden");
+      lessonContent.innerHTML = "";
+      subjectSelect.innerHTML = '<option value="" disabled selected>Choose Subject</option>';
+      subjectContainer.classList.remove("hidden");
+
+      const grade = gradeSelect.value;
+      const strand = strandSelect.value;
+
+      if (grade && strand) {
+        showSubjects(`${grade}_${strand}`);
+      }
+    });
+
+    subjectSelect.addEventListener("change", () => {
+      const subject = subjectSelect.value;
+      if (!subject) return;
+
+      showLessons(subject);
+    });
+
+    function showSubjects(key) {
+      const subjects = subjectsData[key] || [];
+      subjectSelect.innerHTML = '<option value="" disabled selected>Choose Subject</option>';
+      subjects.forEach(subj => {
+        const option = document.createElement("option");
+        option.value = subj;
+        option.textContent = subj;
+        subjectSelect.appendChild(option);
+      });
+      subjectContainer.classList.remove("hidden");
+    }
+
+    function showLessons(subject) {
+      lessonsTitle.textContent = `Lessons for ${subject}`;
+      const lesson = lessonsData[subject];
+
+      if (!lesson) {
+        lessonContent.innerHTML = "<p>No lessons available for this subject yet.</p>";
+        lessonsContainer.classList.remove("hidden");
+        return;
+      }
+
+     lessonContent.innerHTML = `
+  <div class="bg-[#f0e8e1] p-6 rounded-lg shadow-md space-y-6">
+    <div class="border-l-4 border-[#d79e4b] pl-4">
+      <h2 class="text-[#551a25] text-xl font-bold mb-2">Paragraphs</h2>
+      <p class="text-gray-800">${lesson.paragraphs}</p>
+    </div>
+
+    <div class="border-l-4 border-[#d79e4b] pl-4">
+      <h2 class="text-[#551a25] text-xl font-bold mb-2">Essay</h2>
+      <p class="text-gray-800">${lesson.essay}</p>
+    </div>
+
+    <div class="border-l-4 border-[#d79e4b] pl-4">
+      <h2 class="text-[#551a25] text-xl font-bold mb-2">Explanation</h2>
+      <p class="text-gray-800">${lesson.explanation}</p>
+    </div>
+
+    <div class="border-l-4 border-[#d79e4b] pl-4">
+      <h2 class="text-[#551a25] text-xl font-bold mb-2">Fun Facts</h2>
+      <p class="text-gray-800">${lesson.funFacts}</p>
+    </div>
+
+    <div class="border-l-4 border-[#d79e4b] pl-4">
+      <h2 class="text-[#551a25] text-xl font-bold mb-2">Infographic</h2>
+      <p class="text-gray-800">${lesson.infographic}</p>
+    </div>
+
+    <div class="mt-4">
+  <h2 class="text-[#551a25] text-xl font-bold mb-2">Video</h2>
+  <video controls class="w-full rounded border border-[#d79e4b]">
+    <source src="${lesson.video}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+  </div>
+`;
+
+      lessonsContainer.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
